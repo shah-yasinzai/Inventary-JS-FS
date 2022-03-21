@@ -1,0 +1,158 @@
+var trid = 0;
+
+function Sumquantatyprice(thiss, type, id) {
+    var row = $(thiss).closest('tr').attr('id');
+    var qt = 0;
+    var price = 0;
+
+    if (type == 'qt') {
+        qt = $(thiss).val();
+        price = $("#price2" + id).val();
+    }
+    if (type == 'price') {
+        price = $(thiss).val();
+        qt = $("#quantaty1" + id).val();
+    }
+
+
+    var total = price * qt;
+
+    $("#" + row).find("td").eq(4).text(total);
+    $("#ModalLoginFormF").model("hide")
+    formClear();
+
+    totalsum();
+}
+
+function adddata() {
+
+    $("#Submit").show();
+    $("#update1").hide();
+
+    $("#name1").val("");
+    $("#Quantaty").val("");
+    $("#price1").val("");
+    $("#email1").val("");
+
+    $("#ModalLoginForm").modal("show");
+}
+
+$("form").submit(function (e) {
+    e.preventDefault();
+
+    var name = $("input[name='name']").val();
+
+    var qt = $("input[name='qt']").val();
+
+    var price = $("input[name='price']").val();
+
+
+    var totalprice = parseInt(qt) * parseInt(price);
+
+
+    $(".data-table tbody").append("<tr id= 'row_" + trid + "'> <td><input type='checkbox' id='' class='checkBoxClass' name='checkBoxClass' value='${value}'/> </td><td> " + name + "</td><td> <input name='qt' type='number'id= 'quantaty1" + trid + "' value='" + qt + "' onchange='Sumquantatyprice(this,'qt;," + trid + ")'/></td> <td><input name='qt' type='number' id= 'price2" + trid + "' value='" + price + "' onchange='Sumquantatyprice(this,'price'," + trid + ")'/> </td> <td>" + totalprice + "</td> </tr>");
+
+
+    trid++;
+
+    totalsum();
+
+});
+
+
+
+/for delete/
+
+function getSelectedRows() {
+    $('input[type=checkbox]').each(function () {
+        if ($(this).is(":checked")) {
+            $(this).parent().parent().remove();
+        }
+        totalsum();
+    });
+}
+
+
+
+/for edit/
+function edit() {
+    var checkboxes = 0;
+    $('input[type=checkbox]').each(function () {
+        if ($(this).is(":checked")) {
+            checkboxes++;
+        }
+    });
+
+
+    if (checkboxes > 1) {
+        alert("Please select only one 1");
+        return false;
+    }
+    $("table > tbody > tr").each(function () {
+        if ($(this).find(".checkBoxClass").is(":checked")) {
+
+            var name = $(this).find("td").eq(1).text();
+            var qt = $(this).find("td").eq(2).text();
+            var price = $(this).find("td").eq(3).text();
+
+
+
+            $("#name1").val(name);
+            $("#Quantaty").val(parseInt(qt));
+            $("#price1").val(parseInt(price));
+
+            $("#Submit").hide();
+            $("#update1").show();
+
+
+            $("#ModalLoginForm").modal("show");
+        }
+    });
+}
+
+/for update/
+
+
+function updatedata() {
+
+    $("table > tbody > tr").each(function () {
+        if ($(this).find(".checkBoxClass").is(":checked")) {
+
+            var nameupdate = $("#name1").val();
+            var qtyupdate = $("#Quantaty").val();
+            var priceupdate = $("#price1").val();
+
+            var totalprice = parseInt(qtyupdate) * parseInt(priceupdate);
+
+            $(this).find("td").eq(1).text(nameupdate);
+            $(this).find("td").eq(2).text(qtyupdate);
+            $(this).find("td").eq(3).text(priceupdate);
+
+            $(this).find("td").eq(4).text(totalprice);
+
+
+        }
+    });
+
+    totalsum();
+
+}
+
+/total price/
+
+function totalsum() {
+    var total = 0;
+    var qt = 0;
+    var price = 0;
+    $("table > tbody > tr").each(function () {
+
+        total += parseInt($(this).find("td").eq(4).text());
+        qt += parseInt($(this).find("td").eq(2).find("input").val());
+        price += parseInt($(this).find("td").eq(3).find("input").val());
+
+    });
+
+    $("#totalqty1").text(qt);
+    $("#totalprice1").text(price);
+    $("#totaltotalprice").text(total);
+}

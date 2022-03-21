@@ -1,0 +1,111 @@
+form {
+    background-color: goldenrod;
+}
+
+a.navbar-brand {
+    white-space: normal;
+    text-align: center;
+    word-break: break-all;
+}
+
+a {
+    color: peru;
+}
+
+btn-primary {
+    color: goldenrod;
+    background-color: #0366d6;
+    border-color: palegoldenrod;
+}
+
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+    color: darkgoldenrod;
+    background-color: darkgoldenrod;
+    border-color: #1861ac;
+}
+
+
+html {
+    font-size: 14px;
+}
+
+@media (min-width:768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+.border-top {
+    border-top: 1px solid #e5e5e5;
+}
+
+.border-bottom {
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.box-shadow {
+    box-shadow: 0.25rem .75rem rgba(0,0,0, .5);
+}
+
+button.accept-policy {
+    font-size: 1rem;
+    line-height: inherit;
+}
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    margin-bottom: 60px;
+    background-color: #808080;
+}
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    white-space: nowrap;
+    line-height: 60px;
+}
+
+table {
+    font-family: Arial,sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+    color: darkred;
+}
+
+th {
+    color: darkgoldenrod;
+}
+
+tr:nth-child(even) {
+    background-color: skyblue;
+}
+
+edit-row {
+    color: palegoldenrod;
+    padding: 2px;
+}
+
+delete-row {
+    color: palegoldenrod;
+    padding: 2px;
+}
+
+.styled-table {
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 0.9em;
+    font-family: sans-serif;
+    min-width: 400px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}

@@ -1,0 +1,155 @@
+@{ ViewData["Title"] = "Home Page"; }
+
+<!Doctype html>
+<html>
+<head>
+    <link rel="stylesheet" href="https://cdnjs .cloudflare.com/ajax/libs/twitter-bootstrap/3. p/3.3.7/css/bootstrap.min.css" />
+
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
+
+</head>
+<body>
+
+    <h3 style="text-align:center;">Inventory System</h3>
+
+    <button type="button" class="btn btn-primary btn-sm" onclick=" adddata()">
+
+        Add Data
+
+    </button>
+
+    <button type="button" class="btn btn-info btn-sm" onclick="edit()">
+
+        Edit Data
+
+    </button>
+
+    <button type="button" class="btn btn-danger btn-sm" data-toggle="" id="btnDelete" onclick=" getSelectedRows()">
+
+        Delete Data
+
+    </button>
+
+    <!-- Modal add -->
+
+    <div id="ModalLoginForm" class="modal fade">
+
+        <div class="modal-dialog" role="document">
+
+            <div class="modal-content">
+
+                <div class="modal-header">
+
+                    <h1 class="modal-title">Add Data</h1>
+
+                </div>
+
+                <div class="modal-body">
+
+                    <form role="form" method="POST" action="">
+                        <input type="hidden" name=" " _token" value="">
+                        <div class="form-group">
+
+                            <label class="control-label">Name</label>
+
+                            <div>
+                                <input type="text" name="name" class="form-control" required="" id="name1" />
+
+                            </div>
+
+                        </div>
+
+                        <div class="form-group">
+
+                            <label class="control-label">Quantity</label>
+
+                            <div>
+                                <input type="number" name="qt" class="form-control" required="" id="Quantaty" />
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label class="control-label">Price</label>
+
+                            <div>
+                                <input type="number" name="price" class="form-control" required="" id="price1" />
+
+                            </div>
+
+                        </div>
+
+                        <div class="form-group">
+
+                            <div>
+
+                                <button type="submit" id="Submit" class="btn btn-outline-info float-right">Add</button>
+                                <button type="button" id="update1" class="btn btn-outline-info float-right" style="display:none" onclick="updatedata()">Update</button>
+
+                            </div>
+
+                        </div>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!--/.modal -->
+    <input type="hidden" id="hdnRows" />
+    <table class="table table-bordered data-table">
+
+        <thead style="background-color:lightgrey; color: black;">
+            <tr>
+
+                <td> <input type="checkbox" /> Select</td>
+
+                <td>Product Name</td>
+
+                <td> Quantity</td>
+
+                <td> price</td>
+
+
+
+                <td width="200px">Total Price</td>
+            </tr>
+        </thead>
+
+        <tbody>
+        </tbody>
+
+        <tfoot>
+            <tr>
+
+                <td align="right">Total Price</td>
+                <td> </td>
+
+                <td id="totalqty1"> </td>
+
+                <td id="totalprice1"></td>
+
+
+                <td width="200px" id="totaltotalprice"></td>
+
+            </tr>
+        </tfoot>
+    </table>
+
+
+
+   
+
+</body>
+</html>
